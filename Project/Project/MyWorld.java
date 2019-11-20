@@ -1,4 +1,5 @@
 import mayflower.*;
+import java.util.*;
 /**
  * Write a description of class MyWorld here.
  *
@@ -8,7 +9,7 @@ import mayflower.*;
 public class MyWorld extends World
 {
     
-    List<List<String>>() arr = new 
+    List<List<String>> list = new ArrayList<List<String>>(); 
     public MyWorld()
     {
        
