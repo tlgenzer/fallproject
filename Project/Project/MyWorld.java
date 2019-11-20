@@ -9,7 +9,7 @@ import java.util.*;
 public class MyWorld extends World
 {
     
-    List<List<String>> list = new ArrayList<List<String>>(); 
+    
     public MyWorld()
     {
        
