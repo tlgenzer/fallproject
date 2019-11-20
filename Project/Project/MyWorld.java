@@ -36,24 +36,33 @@ public class MyWorld extends World
         {
             arr[i][0] = "block";   
         }
-        for(int i = 0; i < 12; i++)
-        {
-            arr[i][i] = "block";
-
-        }
+        arr[0][1] = "player";
     }
-        public void InitLevel()
+    
+    public void InitLevel()
+    {
+        for(int i = 0; i < arr.length;i++)
         {
-            for(int i = 0; i < arr.length;i++)
+            for(int k = 0; k < arr[0].length;k++)
             {
-                for(int k = 0; k < arr[0].length;k++)
+                if(arr[i][k].equals("block"))
                 {
-                    if(arr[i][k].equals("block"))
-                    {
-                        Block b = new Block();
-                        addObject(b,i*50,Math.abs(600 - ((k+1) * 50)));
-                    }
+                    Block b = new Block();
+                    add(b,i,k);
+                }
+                else if(arr[i][k].equals("player"))
+                {
+                    Player p = new Player();
+                    add(p,i,k);
+
                 }
             }
         }
     }
+    
+     public void add(Actor o,int x, int y )
+    {
+        
+        addObject(o,x*50,Math.abs(600 - ((y+1) * 50)));
+    }
+}

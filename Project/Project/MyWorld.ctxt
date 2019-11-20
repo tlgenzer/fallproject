@@ -9,4 +9,6 @@ comment3.params=
 comment3.target=void\ InitArr()
 comment4.params=
 comment4.target=void\ InitLevel()
-numComments=5
+comment5.params=o\ x\ y
+comment5.target=void\ add(mayflower.Actor,\ int,\ int)
+numComments=6
