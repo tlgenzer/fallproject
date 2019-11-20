@@ -7,7 +7,7 @@ public class Heart extends Actor
     //This is the constructor. It is called exactly once, when the Mayrio object is first created
     public Heart() 
     {
-      setImage("images/Heart/heart1.png");
+      setImage("img/Heart/heart1.png");
       count=0;
       frame=1;
     }
@@ -15,10 +15,10 @@ public class Heart extends Actor
     //This method is called once every frame (about 60 times per second)
     public void act()
  {
-      if(isTouching(Santa.class))
-      {
-        setLocation( getX(), getY()+2000 );
-      }
+      //if(isTouching(Santa.class))
+      //{
+     //   setLocation( getX(), getY()+2000 );
+     // }
       turn(1);
       //Animation
     count++;
@@ -35,6 +35,6 @@ public class Heart extends Actor
     }
     public void checkFrame()
     {
-    setImage("images/Heart/heart"+frame+".png");
+    setImage("img/Heart/heart"+frame+".png");
     }
 }
