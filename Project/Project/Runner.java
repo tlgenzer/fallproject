@@ -5,7 +5,7 @@
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Lab1Runner
+public class Runner
 {
     public static void main(String[] args)
     {
