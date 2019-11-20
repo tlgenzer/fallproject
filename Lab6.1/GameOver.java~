@@ -1,0 +1,29 @@
+import mayflower.*;
+
+public class GameOver extends World
+{
+    public GameOver() 
+    {
+     setBackground("images/gameover.png");
+     }
+  
+    public void act()
+    {
+      if(Mayflower.isKeyDown( Keyboard.KEY_R ))
+      {
+           //Mayflower.stopMusic("Pirate.wav");
+           //Mayflower.setWorld(new BasicWorld()); 
+        
+
+
+
+
+
+
+
+
+//Runner run = new Runner();
+           
+      }
+    }
+}
