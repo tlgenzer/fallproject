@@ -4,6 +4,7 @@ public class Player extends AnimatedActor
     String[] img = new String[10];
     int fps = 33333333;
     Animation idle;
+    public double speed = 2;
     public Player()
     {
         super(33333333);
@@ -18,6 +19,29 @@ public class Player extends AnimatedActor
 public void act()
 {
     super.act();
+    if(Mayflower.isKeyDown( Keyboard.KEY_LEFT ))
+      {
+        setLocation( getX()-speed, getY() );
+        
+      }
+      
+      if(Mayflower.isKeyDown( Keyboard.KEY_RIGHT ))
+      {
+        setLocation( getX()+speed, getY() );
+        
+      }
+      
+      if(Mayflower.isKeyDown( Keyboard.KEY_UP ))
+      {
+        setLocation( getX(), getY()-speed );
+        
+      }
+      
+      if(Mayflower.isKeyDown( Keyboard.KEY_DOWN ))
+      {
+        setLocation( getX(), getY()+speed );
+        
+      }
 }
 
 }
