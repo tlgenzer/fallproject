@@ -10,11 +10,19 @@ public class Enemy extends AnimatedActor
     // instance variables - replace the example below with your own
     int min;
     int max;
+    String[] idlearr = new String[10];
     public Enemy(int min, int max)
     {
         super(33333333);
         min = min;
         max = max;
+        for(int i = 0; i < 10; i++)
+        {
+            idlearr[i] = "img/dog/Idle" + (i) + ".png";
+            
+            
+
+        }
     }
 
     /**
