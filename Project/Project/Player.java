@@ -45,8 +45,23 @@ public class Player extends AnimatedActor
             isOnGround = true;
         }
         else isOnGround = false;
+        if(isInside())
+        {
+         setLocation(getX(),getY() - 3);   
+        }
     }
 
+    public boolean isInside()
+    {
+     if(checkTouching(Block.class))
+     {
+         if(getOneIntersectingObject(Block.class).getY() < getY() + 49)
+         {
+             return true;
+            }
+        }
+        return false;
+    }
     public boolean checkTouching(Class a)
     {
         if(this.isTouching(a))
