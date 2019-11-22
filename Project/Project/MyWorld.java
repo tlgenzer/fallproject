@@ -12,6 +12,7 @@ public class MyWorld extends World
     String[][] arr = new String[16][12];
     public MyWorld()
     {
+        setBackground("img/Background.png");
         for(int i = 0; i < arr.length;i++)
         {
             for(int k = 0; k < arr[0].length;k++)
