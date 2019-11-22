@@ -5,10 +5,13 @@ public class Player extends AnimatedActor
     int fps = 33333333;
     Animation idle;
     public double speed = 2;
-    private int ani = 0;
-    private int timer = 0;
-    private int frame = 1;
-    private double acceleration = 1;
+    int ani = 0;
+    int timer = 0;
+    int frame = 1;
+    double acceleration = 1;
+    double vel = 1;
+    boolean isOnGround;
+    int ySpeed;
     public Player()
     {
         super(33333333);
@@ -29,11 +32,20 @@ public class Player extends AnimatedActor
         getWorld().showText("ani: " + ani, 10, 30);
         getWorld().showText("acceleration: " + acceleration, 100, 30);
         gravity();
-        if(Mayflower.isKeyDown( Keyboard.KEY_F ))
+        if(checkTouching(Block.class))
         {
-            setLocation( getX(), getY()-100 );
-            
+            isOnGround = true;
         }
+        else isOnGround = false;
+    }
+
+    public boolean checkTouching(Class a)
+    {
+        if(this.isTouching(a))
+        {
+            return true;
+        }
+        return false;
     }
 
     public void checkMove()
@@ -53,15 +65,25 @@ public class Player extends AnimatedActor
 
         if(Mayflower.isKeyDown( Keyboard.KEY_W ))
         {
-            setLocation( getX(), getY()-acceleration );
-            ani=1;
+            int groundLevel = getWorld().getWidth() - getImage().getHeight()/2;
+            if(!isOnGround)
+            {
+                ySpeed++; // adds gravity effect
+                setLocation(getX(), getY()+ySpeed); // fall (rising slower or falling faster)
+                if (getY()>=groundLevel) // has landed (reached ground level)
+                {
+                    setLocation(getX(), groundLevel); // set on ground  
+
+                }
+
+            }
+            else
+            {
+             ySpeed = -15;
+             setLocation(getX(),getY() + ySpeed);
+            }
         }
 
-        if(Mayflower.isKeyDown( Keyboard.KEY_S ))
-        {
-            setLocation( getX(), getY()+acceleration );
-            ani=1;
-        }
         if(ani==1&&timer>=8&&frame==1)
         {
             //setImage("images/SantaAni/Santa1.png");
@@ -70,21 +92,27 @@ public class Player extends AnimatedActor
         }
 
     }
+
+    public void addVelocity(int y)
+    {
+
+    }
+
     public void gravity()
     {
         if(isTouching(Block.class))
-            {
-                acceleration=1;
-            } 
+        {
+            acceleration=1;
+        } 
         if(!isTouching(Block.class))
-         {
-             setLocation(getX(),getY()+acceleration*1.2 );
-             if(acceleration<9.8)
-             {
-                 
-                acceleration= acceleration*1.01;
+        {
+            setLocation(getX(),getY()+acceleration*1.2 );
+            if(acceleration<9.8)
+            {
+
+                acceleration= acceleration*1.05;
             }
-            }
-         
+        }
+
     }
 }
