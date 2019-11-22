@@ -36,9 +36,17 @@ public class MyWorld extends World
         {
             arr[i][0] = "block";   
         }
+        arr[2][2] = "block";
+        arr[3][2] = "block";
+        arr[4][2] = "block";
+
+        arr[9][4] = "block";
+        arr[7][4] = "block";
+        arr[8][4] = "block";
+
         arr[0][1] = "player";
     }
-    
+
     public void InitLevel()
     {
         for(int i = 0; i < arr.length;i++)
@@ -59,10 +67,10 @@ public class MyWorld extends World
             }
         }
     }
-    
-     public void add(Actor o,int x, int y )
+
+    public void add(Actor o,int x, int y )
     {
-        
+
         addObject(o,x*50,Math.abs(600 - ((y+1) * 50)));
     }
 }

@@ -7,7 +7,7 @@ public class Animation
     int frameRate;
     int currentFrame;
     
-    public Animation(int fps, String[] img)
+    public Animation(int fps, String[] img, boolean reversable)
     {
         frameRate = fps;
         frames = new MayflowerImage[img.length];
@@ -15,6 +15,10 @@ public class Animation
         {
          frames[i]= new MayflowerImage(img[i]);
          frames[i].scale(50,50);
+         if(reversable)
+         {
+             frames[i].mirrorHorizontally();
+            }
         }
     }
     public int getFrameRate()

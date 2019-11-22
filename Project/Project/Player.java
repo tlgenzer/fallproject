@@ -1,10 +1,14 @@
 import mayflower.*;
 public class Player extends AnimatedActor
 {
-    String[] img = new String[10];
+    String[] idlearr = new String[10];
+    String[] walkarrR = new String[10];
+    
     int fps = 33333333;
     Animation idle;
-    public double speed = 2;
+    Animation walkRight;
+    Animation walkLeft;
+    public double speed = 3.4;
     int ani = 0;
     int timer = 0;
     int frame = 1;
@@ -17,10 +21,14 @@ public class Player extends AnimatedActor
         super(33333333);
         for(int i = 0; i < 10; i++)
         {
-            img[i] = "img/ninjagirl/Idle" + (i) + ".png";
+            idlearr[i] = "img/ninjagirl/Idle" + (i) + ".png";
+            walkarrR[i] = "img/ninjagirl/Run" + (i) + ".png";
+            
 
         }
-        idle = new Animation(fps, img);
+        idle = new Animation(fps, idlearr, false);
+        walkRight = new Animation(fps, walkarrR, false);
+        walkLeft = new Animation(fps, walkarrR, true);
         setAnimation(idle);
     }
 
@@ -54,15 +62,19 @@ public class Player extends AnimatedActor
         if(Mayflower.isKeyDown( Keyboard.KEY_A ))
         {
             setLocation( getX()-speed, getY() );
-            ani=1;
+            setAnimation(walkLeft);
         }
 
-        if(Mayflower.isKeyDown( Keyboard.KEY_D ))
+        else if(Mayflower.isKeyDown( Keyboard.KEY_D ))
         {
             setLocation( getX()+speed, getY() );
-            ani=1;  
+            setAnimation(walkRight);
         }
-
+        else
+        {
+            setAnimation(idle);
+        }
+        
         if(Mayflower.isKeyDown( Keyboard.KEY_W ))
         {
             int groundLevel = getWorld().getWidth() - getImage().getHeight()/2;
@@ -79,11 +91,12 @@ public class Player extends AnimatedActor
             }
             else
             {
-             ySpeed = -15;
-             setLocation(getX(),getY() + ySpeed);
+                ySpeed = -20;
+                setLocation(getX(),getY() + ySpeed);
             }
         }
-
+        
+        
         if(ani==1&&timer>=8&&frame==1)
         {
             //setImage("images/SantaAni/Santa1.png");

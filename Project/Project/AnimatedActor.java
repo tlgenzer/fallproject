@@ -13,6 +13,7 @@ public class AnimatedActor extends Actor
     }
     public void act()
     {
+        
        if(animationTimer.isDone())
         {
            

@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=Animation
-comment1.params=fps\ img
-comment1.target=Animation(int,\ java.lang.String[])
+comment1.params=fps\ img\ reversable
+comment1.target=Animation(int,\ java.lang.String[],\ boolean)
 comment2.params=
 comment2.target=int\ getFrameRate()
 comment3.params=
