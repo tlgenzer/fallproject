@@ -39,25 +39,25 @@ public class Player extends AnimatedActor
     public void checkMove()
     {
 
-        if(Mayflower.isKeyDown( Keyboard.KEY_LEFT ))
+        if(Mayflower.isKeyDown( Keyboard.KEY_A ))
         {
             setLocation( getX()-speed, getY() );
             ani=1;
         }
 
-        if(Mayflower.isKeyDown( Keyboard.KEY_RIGHT ))
+        if(Mayflower.isKeyDown( Keyboard.KEY_D ))
         {
             setLocation( getX()+speed, getY() );
             ani=1;  
         }
 
-        if(Mayflower.isKeyDown( Keyboard.KEY_UP ))
+        if(Mayflower.isKeyDown( Keyboard.KEY_W ))
         {
             setLocation( getX(), getY()-acceleration );
             ani=1;
         }
 
-        if(Mayflower.isKeyDown( Keyboard.KEY_DOWN ))
+        if(Mayflower.isKeyDown( Keyboard.KEY_S ))
         {
             setLocation( getX(), getY()+acceleration );
             ani=1;
