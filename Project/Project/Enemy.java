@@ -10,19 +10,25 @@ public class Enemy extends AnimatedActor
     // instance variables - replace the example below with your own
     int min;
     int max;
-    String[] idlearr = new String[10];
+    String[] walkRarr = new String[10];
+    Animation walkR;
+    Animation walkL;
+    int fps = 33333333;
+    
     public Enemy(int min, int max)
     {
         super(33333333);
         min = min;
         max = max;
-        for(int i = 0; i < 10; i++)
+        for(int i = 0; i < 8; i++)
         {
-            idlearr[i] = "img/dog/Idle" + (i) + ".png";
+            walkRarr[i] = "img/dog/Run (" + (i+1) + ").png";
             
             
 
         }
+        walkR = new Animation(fps,walkRarr,false);
+        walkL= new Animation(fps,walkRarr,true);
     }
 
     /**
@@ -36,11 +42,13 @@ public class Enemy extends AnimatedActor
         if(getX()>min)
         {
             setLocation( getX()+1, getY() );
+            setAnimation(walkR);
         }
         else if(getX()<max)
         {
             
             setLocation( getX()+1, getY() );
+            setAnimation(walkL);
         }
     }
 }

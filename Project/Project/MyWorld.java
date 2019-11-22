@@ -65,8 +65,11 @@ public class MyWorld extends World
                     add(p,i,k);
 
                 }
+                
             }
         }
+        Enemy e = new Enemy(200,300);
+        addObject(e,250,50);
     }
 
     public void add(Actor o,int x, int y )
