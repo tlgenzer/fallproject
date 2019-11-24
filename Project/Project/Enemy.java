@@ -10,7 +10,7 @@ public class Enemy extends AnimatedActor
     // instance variables - replace the example below with your own
     int min;
     int max;
-    String[] walkRarr = new String[10];
+    String[] walkRarr = new String[8];
     Animation walkR;
     Animation walkL;
     int fps = 33333333;

@@ -12,7 +12,7 @@ public class MyMayflower extends Mayflower
     
     public MyMayflower()
        {
-           super("Lab 1", 800, 600);
+           super("Project", 800, 600);
        }
     public void init()
        {
