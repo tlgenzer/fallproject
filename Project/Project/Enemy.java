@@ -8,27 +8,27 @@
 public class Enemy extends AnimatedActor
 {
     // instance variables - replace the example below with your own
-    int min;
-    int max;
+    public int min;
+    public int max;
     String[] walkRarr = new String[8];
     Animation walkR;
     Animation walkL;
     int fps = 33333333;
-    
-    public Enemy(int min, int max)
+    double acceleration = 1;
+    int direction = 1;
+    public Enemy(int x1, int x2)
     {
         super(33333333);
-        min = min;
-        max = max;
+        min = x1;
+        max = x2;
         for(int i = 0; i < 8; i++)
         {
             walkRarr[i] = "img/dog/Run (" + (i+1) + ").png";
-            
-            
 
         }
         walkR = new Animation(fps,walkRarr,false);
         walkL= new Animation(fps,walkRarr,true);
+        setAnimation(walkR);
     }
 
     /**
@@ -39,16 +39,39 @@ public class Enemy extends AnimatedActor
      */
     public void act()
     {
-        if(getX()>min)
+        super.act();
+        getWorld().showText("Min: " + "[" + min + "]" + ", Max: " + "[" + max + "]" + ", D:" + "[" 
+            + direction + "]", 10, 90);
+        if(getX()<min || getX()>max)
         {
-            setLocation( getX()+1, getY() );
-            setAnimation(walkR);
+            // setLocation( getX()+direction, getY() );
+            // setAnimation(walkR);
+
+            direction*=-1;
         }
-        else if(getX()<max)
+        if(direction==1)setAnimation(walkR);
+        if(direction==-1)setAnimation(walkL);
+        //direction=direction*-1;
+        setLocation( getX()+direction, getY() );
+        //setAnimation(walkL);
+        gravity();
+        System.out.println(getX());
+    }
+    public void gravity()
+    {
+        if(isTouching(Block.class))
         {
-            
-            setLocation( getX()+1, getY() );
-            setAnimation(walkL);
+            acceleration=1;
+        } 
+        if(!isTouching(Block.class))
+        {
+            setLocation(getX(),getY()+acceleration*1.2 );
+            if(acceleration<9.8)
+            {
+
+                acceleration= acceleration*1.05;
+            }
         }
+
     }
 }

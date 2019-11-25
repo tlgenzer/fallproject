@@ -3,7 +3,7 @@ public class Player extends AnimatedActor
 {
     String[] idlearr = new String[10];
     String[] walkarrR = new String[10];
-    
+
     int fps = 33333333;
     Animation idle;
     Animation walkRight;
@@ -16,22 +16,25 @@ public class Player extends AnimatedActor
     double vel = 1;
     boolean isOnGround;
     int ySpeed;
+    int lives = 3;
     public Player()
     {
-        super(33333333);
-        for(int i = 0; i < 10; i++)
+        
+       //Animation code for the Player
+       super(33333333);
+       for(int i = 0; i < 10; i++)
         {
             idlearr[i] = "img/ninjagirl/Idle" + (i) + ".png";
             walkarrR[i] = "img/ninjagirl/Run" + (i) + ".png";
-            
 
         }
-        idle = new Animation(fps, idlearr, false);
-        walkRight = new Animation(fps, walkarrR, false);
-        walkLeft = new Animation(fps, walkarrR, true);
-        setAnimation(idle);
+       idle = new Animation(fps, idlearr, false);
+       walkRight = new Animation(fps, walkarrR, false);
+       walkLeft = new Animation(fps, walkarrR, true);
+       setAnimation(idle);
     }
 
+    //This is the act method that repeats forever.
     public void act()
     {
         super.act();
@@ -39,6 +42,7 @@ public class Player extends AnimatedActor
         timer++;
         getWorld().showText("ani: " + ani, 10, 30);
         getWorld().showText("acceleration: " + acceleration, 100, 30);
+        getWorld().showText("Lives: " + lives, 550, 30, Color.BLUE);
         gravity();
         if(checkTouching(Block.class))
         {
@@ -47,21 +51,34 @@ public class Player extends AnimatedActor
         else isOnGround = false;
         if(isInside())
         {
-         setLocation(getX(),getY() - 3);   
+            setLocation(getX(),getY() - 3);   
+        }
+        if(checkTouching(Enemy.class))
+        {
+            lives--;
+            Mayflower.playSound("sound/death.wav");
+            setLocation(0,600-50);   
+        }
+        if(lives==0)
+        {
+            Mayflower.setWorld(new GameOver());
         }
     }
 
+    //Checks if the Player is inside a block.
     public boolean isInside()
     {
-     if(checkTouching(Block.class))
-     {
-         if(getOneIntersectingObject(Block.class).getY() < getY() + 49)
-         {
-             return true;
+        if(checkTouching(Block.class))
+        {
+            if(getOneIntersectingObject(Block.class).getY() < getY() + 49)
+            {
+                return true;
             }
         }
         return false;
     }
+    
+    //This is a method to simplify the isTouching method
     public boolean checkTouching(Class a)
     {
         if(this.isTouching(a))
@@ -70,7 +87,8 @@ public class Player extends AnimatedActor
         }
         return false;
     }
-
+    
+    //This method checks for movement by the keys A and D and also updated the animation dirrection.
     public void checkMove()
     {
 
@@ -78,18 +96,21 @@ public class Player extends AnimatedActor
         {
             setLocation( getX()-speed, getY() );
             setAnimation(walkLeft);
+            //Mayflower.playMusic("sound/running.mp3");
         }
 
         else if(Mayflower.isKeyDown( Keyboard.KEY_D ))
         {
             setLocation( getX()+speed, getY() );
             setAnimation(walkRight);
+            //Mayflower.playMusic("sound/running.mp3");
         }
         else
         {
             setAnimation(idle);
         }
         
+        //This is the code for jumping and the acceleration behind that
         if(Mayflower.isKeyDown( Keyboard.KEY_W ))
         {
             int groundLevel = getWorld().getWidth() - getImage().getHeight()/2;
@@ -110,8 +131,7 @@ public class Player extends AnimatedActor
                 setLocation(getX(),getY() + ySpeed);
             }
         }
-        
-        
+
         if(ani==1&&timer>=8&&frame==1)
         {
             //setImage("images/SantaAni/Santa1.png");
@@ -120,12 +140,13 @@ public class Player extends AnimatedActor
         }
 
     }
-
+    
     public void addVelocity(int y)
     {
 
     }
-
+    
+    //This method creates gravity.
     public void gravity()
     {
         if(isTouching(Block.class))
