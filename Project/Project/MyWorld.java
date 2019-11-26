@@ -74,8 +74,10 @@ public class MyWorld extends World
         addObject(e1,100,400);
         Enemy e2 = new Enemy(350,475);
         addObject(e2,450,300);
-        Enemy e3 = new Enemy(600,750);
+        Enemy e3 = new Enemy(500,700);
         addObject(e3,650,500);
+        Star s = new Star(1);
+        addObject(s,730,500);
     }
 
     public void add(Actor o,int x, int y )
