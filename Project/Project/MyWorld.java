@@ -79,7 +79,7 @@ public class MyWorld extends World
         Star s = new Star(1);
         addObject(s,730,500);
         Coin c = new Coin();
-        addObject(c,670,500);
+        addObject(c,((int)(Math.random()*7)*100)+50,509);
     }
 
     public void add(Actor o,int x, int y )
