@@ -78,6 +78,8 @@ public class MyWorld extends World
         addObject(e3,650,500);
         Star s = new Star(1);
         addObject(s,730,500);
+        Coin c = new Coin();
+        addObject(c,670,500);
     }
 
     public void add(Actor o,int x, int y )

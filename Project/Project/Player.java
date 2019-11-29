@@ -16,7 +16,9 @@ public class Player extends AnimatedActor
     double vel = 1;
     boolean isOnGround;
     int ySpeed;
+    //Visual Variables
     int lives = 3;
+    int coins = 0;
     public Player()
     {
         
@@ -59,6 +61,7 @@ public class Player extends AnimatedActor
             Mayflower.playSound("sound/death.wav");
             setLocation(0,600-50);   
         }
+        if(checkTouching(Coin.class))coins++;
         if(lives==0)
         {
             Mayflower.setWorld(new GameOver());
