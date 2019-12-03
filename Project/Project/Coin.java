@@ -8,7 +8,6 @@ import mayflower.*;
 public class Coin extends Actor
 {
     // instance variables - replace the example below with your own
-   
 
     /**
      * Constructor for objects of class Coin
@@ -17,11 +16,15 @@ public class Coin extends Actor
     {
         setImage("img/Coin.png");
     }
-    
+
     public void act() 
     {
         turn(4);
-        if(checkTouching(Player.class))setLocation(-1000,5000);
+        if(checkTouching(Player.class))
+        {
+            Player.coins++;
+            setLocation(-1000,5000);
+        }
     }
     //This is a method to simplify the isTouching method
     public boolean checkTouching(Class a)

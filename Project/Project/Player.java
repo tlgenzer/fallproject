@@ -8,6 +8,7 @@ public class Player extends AnimatedActor
     Animation idle;
     Animation walkRight;
     Animation walkLeft;
+    MyWorld world;
     public double speed = 3.4;
     int ani = 0;
     int timer = 0;
@@ -18,34 +19,55 @@ public class Player extends AnimatedActor
     int ySpeed;
     //Visual Variables
     int lives = 3;
-    int coins = 0;
-    public Player()
+    public static int coins;
+    public Player(int coin)
     {
-        
-       //Animation code for the Player
-       super(33333333);
-       for(int i = 0; i < 10; i++)
+
+        //Animation code for the Player
+        super(33333333);
+        coins = coin;
+
+        for(int i = 0; i < 10; i++)
         {
             idlearr[i] = "img/ninjagirl/Idle" + (i) + ".png";
             walkarrR[i] = "img/ninjagirl/Run" + (i) + ".png";
 
         }
-       idle = new Animation(fps, idlearr, false);
-       walkRight = new Animation(fps, walkarrR, false);
-       walkLeft = new Animation(fps, walkarrR, true);
-       setAnimation(idle);
+        idle = new Animation(fps, idlearr, false);
+        walkRight = new Animation(fps, walkarrR, false);
+        walkLeft = new Animation(fps, walkarrR, true);
+        setAnimation(idle);
     }
 
     //This is the act method that repeats forever.
+    public int getCoinCount()
+    {
+        return coins;   
+    }
+
     public void act()
     {
+
         super.act();
         checkMove();
         timer++;
+        System.out.println(coins);
         getWorld().showText("ani: " + ani, 10, 30);
         getWorld().showText("acceleration: " + acceleration, 100, 30);
         getWorld().showText("Lives: " + lives, 550, 30, Color.BLUE);
+        getWorld().showText("Coins: " + coins, 550, 120, Color.BLUE);
         gravity();
+        if(getX() >= 800 && !(getWorld() instanceof MyWorld2))
+        {
+            System.out.println("right");
+            Mayflower.setWorld(new MyWorld2(coins));
+        }
+        else if(getX() <= -1 && !(getWorld() instanceof MyWorld ))
+        {
+            System.out.println("left");
+            Mayflower.setWorld(new MyWorld(coins));
+        }
+        
         if(checkTouching(Block.class))
         {
             isOnGround = true;
@@ -61,7 +83,7 @@ public class Player extends AnimatedActor
             Mayflower.playSound("sound/death.wav");
             setLocation(0,600-50);   
         }
-        if(checkTouching(Coin.class))coins++;
+
         if(lives==0)
         {
             Mayflower.setWorld(new GameOver());
@@ -80,7 +102,7 @@ public class Player extends AnimatedActor
         }
         return false;
     }
-    
+
     //This is a method to simplify the isTouching method
     public boolean checkTouching(Class a)
     {
@@ -90,7 +112,7 @@ public class Player extends AnimatedActor
         }
         return false;
     }
-    
+
     //This method checks for movement by the keys A and D and also updated the animation dirrection.
     public void checkMove()
     {
@@ -112,7 +134,7 @@ public class Player extends AnimatedActor
         {
             setAnimation(idle);
         }
-        
+
         //This is the code for jumping and the acceleration behind that
         if(Mayflower.isKeyDown( Keyboard.KEY_W ))
         {
@@ -143,12 +165,12 @@ public class Player extends AnimatedActor
         }
 
     }
-    
+
     public void addVelocity(int y)
     {
 
     }
-    
+
     //This method creates gravity.
     public void gravity()
     {
@@ -168,3 +190,4 @@ public class Player extends AnimatedActor
 
     }
 }
+

@@ -55,7 +55,7 @@ public class Enemy extends AnimatedActor
         setLocation( getX()+direction, getY() );
         //setAnimation(walkL);
         gravity();
-        System.out.println(getX());
+    
     }
     public void gravity()
     {

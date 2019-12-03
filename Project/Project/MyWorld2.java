@@ -6,12 +6,13 @@ import java.util.*;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class MyWorld extends World
+public class MyWorld2 extends World
 {
 
     String[][] arr = new String[16][12];
     int c;
-    public MyWorld(int coin)
+    
+    public MyWorld2(int coin)
     {
         c = coin;
         setBackground("img/Background.png");
@@ -70,19 +71,18 @@ public class MyWorld extends World
                 
             }
         }
-        Enemy e = new Enemy(200,400);
-        addObject(e,250,450);
-        Enemy e1 = new Enemy(99,200);
-        addObject(e1,100,400);
-        Enemy e2 = new Enemy(350,475);
-        addObject(e2,450,300);
-        Enemy e3 = new Enemy(500,700);
-        addObject(e3,650,500);
-        Star s = new Star(1);
-       // addObject(s,730,500);
-       
-        Coin c = new Coin();
-        addObject(c,((int)(Math.random()*7)*100)+50,509);
+        // Enemy e = new Enemy(200,400);
+        // addObject(e,250,450);
+        // Enemy e1 = new Enemy(99,200);
+        // addObject(e1,100,400);
+        // Enemy e2 = new Enemy(350,475);
+        // addObject(e2,450,300);
+        // Enemy e3 = new Enemy(500,700);
+        // addObject(e3,650,500);
+        // Star s = new Star(1);
+        // addObject(s,730,500);
+         Coin c = new Coin();
+         addObject(c,((int)(Math.random()*7)*100)+50,509);
     }
 
     public void add(Actor o,int x, int y )
