@@ -16,8 +16,7 @@ public class MyMayflower extends Mayflower
        }
     public void init()
        {
-           Mayflower.playSound("sound/gamer.wav");
-           Mayflower.playSound("sound/town.wav");
+           
              Mayflower.setFullScreen(false);
              World w = new Intro();
              Mayflower.setWorld(w);

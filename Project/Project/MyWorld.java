@@ -13,6 +13,8 @@ public class MyWorld extends World
     int c;
     public MyWorld(int coin)
     {
+        Mayflower.playMusic("sound/gamer.mp3");
+        Mayflower.playMusic("sound/town.mp3");
         c = coin;
         setBackground("img/Background.png");
         for(int i = 0; i < arr.length;i++)
@@ -30,7 +32,7 @@ public class MyWorld extends World
 
     public void act()
     {
-
+        showText("Coins: " + c, 550, 420, Color.BLUE);
     }
 
     public void InitArr()
@@ -46,8 +48,26 @@ public class MyWorld extends World
         arr[9][4] = "block";
         arr[7][4] = "block";
         arr[8][4] = "block";
-
-        arr[0][1] = "player";
+          //
+          //
+          //
+          //
+          //        FIX THIS COIN CHECK SYSTEM
+          //
+          //        \/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+          //
+          //
+          //
+        if(c<1)
+        {
+            arr[0][1] = "player";
+            System.out.println(0);
+        }
+        if(c>1)
+        {
+            Player p = new Player(c);
+            addObject(p,250,450);
+        }
     }
 
     public void InitLevel()
@@ -67,7 +87,7 @@ public class MyWorld extends World
                     add(p,i,k);
 
                 }
-                
+
             }
         }
         Enemy e = new Enemy(200,400);
@@ -79,8 +99,8 @@ public class MyWorld extends World
         Enemy e3 = new Enemy(500,700);
         addObject(e3,650,500);
         Star s = new Star(1);
-       // addObject(s,730,500);
-       
+        // addObject(s,730,500);
+
         Coin c = new Coin();
         addObject(c,((int)(Math.random()*7)*100)+50,509);
     }
