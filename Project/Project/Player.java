@@ -6,8 +6,10 @@ public class Player extends AnimatedActor
 
     int fps = 33333333;
     Animation idle;
+    Animation idleLeft;
     Animation walkRight;
     Animation walkLeft;
+    boolean isFacingLeft;
     MyWorld world1;
     MyWorld2 world2;
     public double speed = 3.4;
@@ -35,6 +37,7 @@ public class Player extends AnimatedActor
 
         }
         idle = new Animation(fps, idlearr, false);
+        idleLeft = new Animation(fps, idlearr, true);
         walkRight = new Animation(fps, walkarrR, false);
         walkLeft = new Animation(fps, walkarrR, true);
         setAnimation(idle);
@@ -58,17 +61,17 @@ public class Player extends AnimatedActor
         getWorld().showText("Lives: " + lives, 550, 30, Color.BLUE);
         getWorld().showText("Coins: " + coins, 550, 120, Color.BLUE);
         gravity();
-        if(getX() >= 800 && !(getWorld() instanceof MyWorld2))
+        if(getX() >= 800 && !(getWorld() instanceof MyWorld2) && !(getWorld() instanceof Win))
         {
             System.out.println("right");
             Mayflower.setWorld(new MyWorld2(coins));
         }
-        else if(getX() <= -1 && !(getWorld() instanceof MyWorld ))
+        else if(getX() <= -1 && !(getWorld() instanceof MyWorld )&& !(getWorld() instanceof Win))
         {
             System.out.println("left");
             Mayflower.setWorld(new MyWorld(coins, true));
         }
-        
+
         if(checkTouching(Block.class))
         {
             isOnGround = true;
@@ -84,7 +87,13 @@ public class Player extends AnimatedActor
             Mayflower.playSound("sound/death.wav");
             setLocation(0,600-50);   
         }
-
+        if(getY() > 700)
+        {
+         lives--;
+            Mayflower.playSound("sound/death.wav");
+            setLocation(0,600-50);      
+        }
+        
         if(lives==0)
         {
             Mayflower.setWorld(new GameOver());
@@ -122,6 +131,7 @@ public class Player extends AnimatedActor
         {
             setLocation( getX()-speed, getY() );
             setAnimation(walkLeft);
+            isFacingLeft = true;
             //Mayflower.playMusic("sound/running.mp3");
         }
 
@@ -129,11 +139,17 @@ public class Player extends AnimatedActor
         {
             setLocation( getX()+speed, getY() );
             setAnimation(walkRight);
+            isFacingLeft = false;
             //Mayflower.playMusic("sound/running.mp3");
         }
         else
         {
-            setAnimation(idle);
+            if(isFacingLeft)
+            {
+                setAnimation(idleLeft); 
+            }
+            else setAnimation(idle);
+
         }
 
         //This is the code for jumping and the acceleration behind that

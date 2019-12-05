@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Win
+comment1.params=coin
+comment1.target=Win(int)
+comment2.params=o\ x\ y
+comment2.target=void\ add(mayflower.Actor,\ int,\ int)
+comment3.params=
+comment3.target=void\ act()
+numComments=4

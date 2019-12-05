@@ -12,9 +12,11 @@ public class MyWorld2 extends World
     String[][] arr = new String[16][12];
     int c;
     
+    
     public MyWorld2(int coin)
     {
         c = coin;
+        Mayflower.showBounds(true);
         setBackground("img/Background.png");
         for(int i = 0; i < arr.length;i++)
         {
@@ -40,13 +42,16 @@ public class MyWorld2 extends World
         {
             arr[i][0] = "block";   
         }
-        arr[2][2] = "block";
+        arr[2][0] = "";
+        arr[3][0] = "";
+        arr[4][0] = "";
+        arr[5][0] = "";
+        arr[6][0] = "";
+        
         arr[3][2] = "block";
         arr[4][2] = "block";
-
-        arr[9][4] = "block";
-        arr[7][4] = "block";
-        arr[8][4] = "block";
+        arr[5][2] = "block";
+        
 
         arr[0][1] = "player";
     }
@@ -71,16 +76,14 @@ public class MyWorld2 extends World
                 
             }
         }
-        // Enemy e = new Enemy(200,400);
-        // addObject(e,250,450);
-        // Enemy e1 = new Enemy(99,200);
-        // addObject(e1,100,400);
-        // Enemy e2 = new Enemy(350,475);
-        // addObject(e2,450,300);
-        // Enemy e3 = new Enemy(500,700);
-        // addObject(e3,650,500);
-        // Star s = new Star(1);
-        // addObject(s,730,500);
+         Enemy e = new Enemy(150,250);
+         addObject(e,200,400);
+        Enemy e2 = new Enemy(350,550);
+         addObject(e2,500,400);
+        Enemy e3 = new Enemy(450,600);
+         addObject(e3,500,400);
+        Star s = new Star(2, c);
+        addObject(s,730,500);
          Coin c = new Coin();
          addObject(c,((int)(Math.random()*7)*100)+50,509);
     }

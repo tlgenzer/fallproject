@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=Star
-comment1.params=lvl
-comment1.target=Star(int)
+comment1.params=lvl\ coin
+comment1.target=Star(int,\ int)
 comment2.params=
 comment2.target=void\ act()
 numComments=3

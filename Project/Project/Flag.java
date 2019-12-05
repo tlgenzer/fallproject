@@ -6,7 +6,7 @@ public class Flag extends Actor
     //This is the constructor. It is called exactly once, when the Mayrio object is first created
     public Flag() 
     {
-      setImage("images/Flag.png");
+      setImage("img/Flag.png");
     }
   
     //This method is called once every frame (about 60 times per second)
