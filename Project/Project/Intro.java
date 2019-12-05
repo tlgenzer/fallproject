@@ -13,7 +13,7 @@ public class Intro extends World
     {
         if(Mayflower.isKeyDown( Keyboard.KEY_SPACE ))
         {
-            World w = new MyWorld(0);
+            World w = new MyWorld(0,false);
             Mayflower.setWorld(w);
 
         }

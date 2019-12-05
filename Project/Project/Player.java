@@ -8,7 +8,8 @@ public class Player extends AnimatedActor
     Animation idle;
     Animation walkRight;
     Animation walkLeft;
-    MyWorld world;
+    MyWorld world1;
+    MyWorld2 world2;
     public double speed = 3.4;
     int ani = 0;
     int timer = 0;
@@ -65,7 +66,7 @@ public class Player extends AnimatedActor
         else if(getX() <= -1 && !(getWorld() instanceof MyWorld ))
         {
             System.out.println("left");
-            Mayflower.setWorld(new MyWorld(coins));
+            Mayflower.setWorld(new MyWorld(coins, true));
         }
         
         if(checkTouching(Block.class))
