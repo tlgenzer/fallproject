@@ -67,8 +67,7 @@ public class MyWorld extends World
         }
         if(from2)
         {
-            Player p = new Player(c);
-            addObject(p,250,450);
+            arr[16][11] = "player";
         }
     }
 
