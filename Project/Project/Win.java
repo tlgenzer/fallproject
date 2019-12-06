@@ -62,7 +62,7 @@ public class Win extends World
         // //Mayflower.setWorld(new BasicWorld()); 
         // //Runner run = new Runner(); 
         // }
-        showText("Score: " + c, 550, 420, Color.RED);
+        showText("Score: " + c, 100, 120, Color.RED);
 
     }
 }

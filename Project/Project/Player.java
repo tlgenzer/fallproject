@@ -89,15 +89,17 @@ public class Player extends AnimatedActor
         }
         if(getY() > 700)
         {
-         lives--;
+            lives--;
             Mayflower.playSound("sound/death.wav");
             setLocation(0,600-50);      
         }
-        
+
         if(lives==0)
         {
             Mayflower.setWorld(new GameOver());
         }
+        if(isTouching(Flag.class))acceleration=1;
+        cheatCodes();
     }
 
     //Checks if the Player is inside a block.
@@ -205,6 +207,14 @@ public class Player extends AnimatedActor
             }
         }
 
+    }
+
+    public void cheatCodes()
+    {
+        if(Mayflower.isKeyDown( Keyboard.KEY_O ) && Mayflower.isKeyDown( Keyboard.KEY_P ))
+        {
+           setLocation(700,0);
+        }   
     }
 }
 

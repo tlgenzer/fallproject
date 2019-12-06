@@ -22,7 +22,7 @@ public class Flag extends Actor
           
       }
       
-      if(oldY>650)
+      if(oldY>500)
       {
         setLocation( 1000, 1000 );
         

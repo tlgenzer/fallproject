@@ -16,4 +16,6 @@ comment7.params=y
 comment7.target=void\ addVelocity(int)
 comment8.params=
 comment8.target=void\ gravity()
-numComments=9
+comment9.params=
+comment9.target=void\ cheatCodes()
+numComments=10
