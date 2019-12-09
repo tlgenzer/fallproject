@@ -63,12 +63,12 @@ public class Player extends AnimatedActor
         gravity();
         if(getX() >= 800 && !(getWorld() instanceof MyWorld2) && !(getWorld() instanceof Win))
         {
-            System.out.println("right");
+            //System.out.println("right");
             Mayflower.setWorld(new MyWorld2(coins));
         }
         else if(getX() <= -1 && !(getWorld() instanceof MyWorld )&& !(getWorld() instanceof Win))
         {
-            System.out.println("left");
+            //System.out.println("left");
             Mayflower.setWorld(new MyWorld(coins, true));
         }
 
@@ -206,7 +206,6 @@ public class Player extends AnimatedActor
                 acceleration= acceleration*1.05;
             }
         }
-
     }
 
     public void cheatCodes()

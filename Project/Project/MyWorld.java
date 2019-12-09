@@ -51,16 +51,7 @@ public class MyWorld extends World
         arr[9][4] = "block";
         arr[7][4] = "block";
         arr[8][4] = "block";
-          //
-          //
-          //
-          //
-          //        FIX THIS COIN CHECK SYSTEM
-          //
-          //        \/\/\/\/\/\/\/\/\/\/\/\/\/\/\
-          //
-          //
-          //
+    
         if(c<1)
         {
             arr[0][1] = "player";
