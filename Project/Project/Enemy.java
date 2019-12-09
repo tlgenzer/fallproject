@@ -40,8 +40,8 @@ public class Enemy extends AnimatedActor
     public void act()
     {
         super.act();
-        getWorld().showText("Min: " + "[" + min + "]" + ", Max: " + "[" + max + "]" + ", D:" + "[" 
-            + direction + "]", 10, 90);
+        //getWorld().showText("Min: " + "[" + min + "]" + ", Max: " + "[" + max + "]" + ", D:" + "[" 
+         //   + direction + "]", 10, 90);
         if(getX()<min || getX()>max)
         {
             // setLocation( getX()+direction, getY() );

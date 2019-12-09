@@ -56,8 +56,8 @@ public class Player extends AnimatedActor
         checkMove();
         timer++;
         //System.out.println(coins);
-        getWorld().showText("ani: " + ani, 10, 30);
-        getWorld().showText("acceleration: " + acceleration, 100, 30);
+        //getWorld().showText("ani: " + ani, 10, 30);
+        //getWorld().showText("acceleration: " + acceleration, 100, 30);
         getWorld().showText("Lives: " + lives, 550, 30, Color.BLUE);
         getWorld().showText("Coins: " + coins, 550, 120, Color.BLUE);
         gravity();
