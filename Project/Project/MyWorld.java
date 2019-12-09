@@ -35,7 +35,7 @@ public class MyWorld extends World
     public void act()
     {
         //showText("Coins: " + c, 550, 420, Color.BLUE);
-        System.out.println(from22);
+        //System.out.println(from22);
     }
 
     public void InitArr()

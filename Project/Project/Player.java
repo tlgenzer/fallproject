@@ -155,7 +155,7 @@ public class Player extends AnimatedActor
         }
 
         //This is the code for jumping and the acceleration behind that
-        if(Mayflower.isKeyDown( Keyboard.KEY_W ))
+        if(Mayflower.isKeyDown( Keyboard.KEY_W )&& !isTouching(Flag.class))
         {
             int groundLevel = getWorld().getWidth() - getImage().getHeight()/2;
             if(!isOnGround)
